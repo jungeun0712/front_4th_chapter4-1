@@ -63,7 +63,7 @@
           run: |
             aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
        ```
-
+       
 - IAM (Identity and Access Management)
   1. IAM 개념
      - AWS 리소스에 대한 접근을 제어하는 서비스
@@ -88,8 +88,24 @@
      - Next.js, GitHub Actions, AWS CLI 등 다양한 개발 환경에서 API 키, 데이터베이스 정보, 서버 설정 값 등을 보관하는 용도로 사용
 
 
+# CDN과 성능최적화
+- 왼쪽은 S3를 통해 받은 응답 속도와 파일 사이즈이고 오른쪽은 CloudFront를 통해 받은 응답 속도와 파일 사이즈이다.
+- 캡처 화면을 통해 CDN을 사용했을 때와 사용하지 않았을 때의 차이를 비교할 수 있다.
 
+  
+  ![Image](https://github.com/user-attachments/assets/27664700-c375-45c9-ac66-b6567d235e8c)
+  | |파일 사이즈|응답 시간|
+  |---|---:|---:|
+  |S3|11.9kB|445ms|
+  |CloudFront|3.1kB|60ms|
 
+- 성능 차이가 나는 원인
+  - 응답 속도 차이
+    - S3는 특정 AWS 리전(예: us-east-1)에 위치해 있으며, 사용자와 물리적으로 멀 경우 응답 시간이 길어짐
+    - CloudFront는 전 세계 엣지 서버(Edge Location)에서 캐싱된 데이터를 제공하여 응답 시간이 단축됨
+  - 캐싱(Caching) 효과
+    - S3는 요청할 때마다 원본 데이터를 직접 제공 (응답 시간이 상대적으로 길어짐)
+    - CloudFront는 한 번 요청된 데이터를 엣지 서버에 캐싱하여 재요청 시 더 빠르게 제공
 
 
 
