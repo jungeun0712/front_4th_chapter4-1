@@ -3,7 +3,7 @@
 - Next.js 프로젝트 생성 후, GitHub에 올리고 AWS와 GitHub Actions를 연동하였습니다.
 
 ## 배포 다이어그램
-![Image](https://github.com/user-attachments/assets/3564700a-d05c-48a2-b25b-2f2b52e6f408)
+![Image](https://github.com/user-attachments/assets/da9765c4-3852-4fa8-b8fc-edf70caa6329)
 
 ## 주요 링크
 - S3 버킷 웹사이트 엔드포인트 : http://hangae-s3-demo-bucket.s3-website-us-east-1.amazonaws.com
